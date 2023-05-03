@@ -1,0 +1,82 @@
+﻿    <!-- Breadcrumb Area Start Here -->
+<div class="breadcrumbs-area position-relative">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <div class="breadcrumb-content position-relative section-content">
+                    <h3 class="title-3">Checkout</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li>Checkout</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Breadcrumb Area End Here -->
+<!-- Checkout Area Start Here -->
+<div class="checkout-area mt-no-text">
+    <div class="container custom-container">
+        <div class="row">
+            <div class="col-lg-6 col-12 col-custom">
+                <div class="your-order">
+                    <h3>Your order Details</h3>
+                    <div class="your-order-table table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th class="cart-product-name">Product</th>
+                                    <th class="cart-product-total">Total</th>
+                                    <th class="cart-product-total">Date</th>
+
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @{
+
+                                    int total = 0;
+                                    foreach (System.Data.DataRow dr in ViewBag.order_details.Rows)
+                                    {
+
+                                        total = total + Convert.ToInt32(dr["p_price"].ToString());
+
+                                        ViewBag.total = total;
+                                        <tr class="cart_item">
+                                            <td class="cart-product-name">
+                                                @dr["p_name"].ToString()<strong class="product-quantity">
+                                                </strong>
+                                            </td>
+                                            <td class="cart-product-total text-center"><span class="amount">@dr["p_price"].ToString()</span></td>
+                                            <td>@dr["c_date"].ToString()</td>
+                                        </tr>
+                                    }
+                                }
+
+
+                            </tbody>
+                            <tfoot>
+                                <tr class="cart-subtotal">
+                                    <th>Cart Subtotal</th>
+                                    <td class="text-center"><span class="amount">@ViewBag.total</span></td>
+                                </tr>
+                                <tr class="order-total">
+                                    <th>Order Total</th>
+                                    <td class="text-center"><strong><span class="amount">@ViewBag.total</span></strong></td>
+                                </tr>
+                                <tr class="order-total">
+                                    <th></th>
+                                    <td class="text-center"><strong><span class="amount"></span></strong></td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Checkout Area End Here -->
